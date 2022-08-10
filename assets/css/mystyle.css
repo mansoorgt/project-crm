@@ -1,0 +1,30 @@
+.myfooter
+{
+	position:relative !important;
+	bottom:0px;
+}
+
+.statcard{
+
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/*mobile view*/
+@media only screen and (max-width: 425px) {
+
+	.myfooter
+{
+	position:relative !important;
+	bottom:0px;
+}
+
+.overall-stat 
+{
+	width: 40% !important;
+}
+.mediachart
+{
+width: 500px;
+}
+ 
+}

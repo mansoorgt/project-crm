@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Infome-Crm-Profile</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo/logo_icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+<!-- data table cdn -->
+
+
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="../assets/css/mystyle.css" />
+<link rel="stylesheet" href="../assets/css/prostyle.css" />
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+  
+
+    <!-- Page CSS -->
+<!-- modal template start -->
+<!-- Remember to include jQuery :) -->
+
+<!-- bootstrap cdn start -->
+
+
+<!-- bootstrap cdn end -->
+
+<!-- modal template end  -->
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+<!-- js script for chart start -->
+
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<!-- js script for chart end -->
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+<style>
+  .app-container {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 100%;
+    background-color: #10101d;
+    padding: 24px;
+    overflow: auto;
+  }
+  
+  .app-header {
+    font-size: 20px;
+    line-height: 32px;
+    margin: 0 0 12px 0;
+    color: #fff;
+  }
+  
+  .submit-task {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: none;
+    background: var(--add-button);
+    color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-plus'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 12px 0 var(--add-button-shadow);
+  }
+  
+  .add-task {
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+  }
+  
+  .task-input {
+    border-right: none;
+    width: 100%;
+    padding: 0 4px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    margin-right: 12px;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+    
+    &:placeholder { color: #fff; }
+  }
+  
+  .task-list-item {
+    background-color: #191933;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    
+    input {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check' stroke='%23fff'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 0;
+      transition: .2s;
+      margin-right: 8px;
+      flex-shrink: 0;
+      margin-top: 4px;
+      appearance: none;
+      
+      &:hover {
+        border-color: var(--checkbox-color);
+        box-shadow: 0 0 0 3px var(--checkbox-shadow);
+      }
+      
+      &:checked {
+        background-size: 10px;
+        border: 1px solid var(--checkbox-color);
+        background-color: var(--checkbox-color);
+        
+        + span {
+          color: rgba(255, 255, 255, 0.5);
+          text-decoration: line-through rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+    
+    &-label {
+      display: flex;
+      align-items: flex-start;
+      color: #fff;
+      margin-right: 8px;
+      font-size: 14px;
+      line-height: 24px;
+      position: relative;
+      transition: .2s;
+      cursor: pointer;
+    }
+  }
+  
+  .delete-btn {
+    margin-left: auto;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff3d46' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-trash-2'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
+    background-size: 16px;
+    background-position: center;
+    cursor: pointer;
+  }
+  
+  @supports(-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='checkbox'],
+    input[type='radio'] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+  }
+
+</style>
+
+
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+               <img width="200" height="40" src="../assets/img/logo/login_logo.png">
+              </span>
+             
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item active">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+           <!-- sales -->
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Sales</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+               <i class='menu-icon tf-icons bx bxs-bar-chart-alt-2'></i>
+                <div data-i18n="Account Settings">Sales</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pages-account-settings-account.html" class="menu-link">
+
+                    <div data-i18n="Account">Enquiry</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                    <div data-i18n="Notifications">Requirement</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Quotation</div>
+                  </a>
+                </li>
+                        <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Sales Order</div>
+                  </a>
+                </li>
+           <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Delivary Note</div>
+                  </a>
+                </li>
+       <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Dispatch</div>
+                  </a>
+                </li>
+                   <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections">Service</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+        <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+              
+                <i class='menu-icon tf-icons bx bxs-user-check'></i>
+                <div data-i18n="Misc">Human Resource</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pages-misc-error.html" class="menu-link">
+                    <div data-i18n="Error">Admin</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">User</div>
+                  </a>
+                </li>
+                     <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">Employee Management</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Procurement</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pages-misc-error.html" class="menu-link">
+                    <div data-i18n="Error">Supplier</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">Purchase Order</div>
+                  </a>
+                </li>
+                   <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">Supplier Contact</div>
+                  </a>
+                </li>
+                   <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">Purchase Request</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+ <li class="menu-item">
+              <a href="cards-basic.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Customers
+                </div>
+              </a>
+            </li>
+
+<li class="menu-item">
+              <a href="cards-basic.html" class="menu-link">
+             <i class='menu-icon tf-icons bx bx-phone'></i>
+                <div data-i18n="Basic">Contact
+                </div>
+              </a>
+            </li>
+<li class="menu-item">
+              <a href="cards-basic.html" class="menu-link">
+             <i class='menu-icon tf-icons  bx bxl-product-hunt'></i>
+                <div data-i18n="Basic">Product
+                </div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div data-i18n="Authentications">Settings</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Login</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Register</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Forgot Password</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+         
+         
+            
+            <!-- Extended components -->
+            <li class="menu-item">
+              <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-copy"></i>
+                <div data-i18n="Extended UI">Report</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Customer</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="extended-ui-text-divider.html" class="menu-link">
+                    <div data-i18n="Text Divider">Quotation</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          
+ 
+
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                  />
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+         
+        <i style="font-size:24px;" class="bx bxs-bell"></i>
+                </li>
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">John Doe</span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <span class="d-flex align-items-center align-middle">
+                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                          <span class="flex-grow-1 align-middle">Billing</span>
+                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-basic.html">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+<!-- profile start -->
+
+<div class="container-fluid">
+    <div id="content" class="content p-0">
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+            <div class="profile-header-content">
+                <div class="profile-header-img mb-4">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mb-4" alt="" />
+                </div>
+    
+                <div class="profile-header-info">
+                    <h4 class="m-t-sm">Shan </h4>
+                    <p class="m-b-sm">Managing Director</p>
+                    <a href="#" class="btn btn-xs btn-primary mb-2">Edit Profile</a>
+                </div>
+            </div>
+    
+      
+        </div>
+    
+        <div class="profile-container">
+            <div class="row row-space-20">
+                <div class="col-md-12">
+                    <!-- CRM PROFILE desciption start  -->
+                    <div class="row">
+                      <div class="col-xl-12">
+                       
+                        <div class="nav-align-top mb-4">
+                          <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                            <li class="nav-item">
+                              <button
+                                type="button"
+                                class="nav-link active"
+                                role="tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#navs-pills-justified-home"
+                                aria-controls="navs-pills-justified-home"
+                                aria-selected="true"
+                              >
+                              <i class="bx bx-line-chart"></i> Performance
+                                <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span>
+                              </button>
+                            </li>
+                            <li class="nav-item">
+                              <button
+                                type="button"
+                                class="nav-link"
+                                role="tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#navs-pills-justified-profile"
+                                aria-controls="navs-pills-justified-profile"
+                                aria-selected="false"
+                              >
+                                <i class="tf-icons bx bx-user"></i> About
+                              </button>
+                            </li>
+                            <li class="nav-item">
+                              <button
+                                type="button"
+                                class="nav-link"
+                                role="tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#navs-pills-justified-messages"
+                                aria-controls="navs-pills-justified-messages"
+                                aria-selected="false"
+                              >
+                                <i class="tf-icons bx bx-message-square"></i> User Management
+                              </button>
+                            </li>
+                          </ul>
+                          <div class="tab-content">
+                            
+                          <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
+<div class="row">                         
+                        
+                            <div class="row">
+                              <!-- Order Statistics -->
+                              <div class="col-md-4 col-lg-4 col-xl-4 order-0 mb-4">
+                                <div class="card h-100">
+                                  <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                                    <div class="card-title mb-0">
+                                      <h5 class="m-0 me-2">Overall Performance</h5>
+                                      <small class="text-muted">42.82k Total Profit</small>
+                                    </div>
+                                   
+                                  </div>
+                                  <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                      <div class="d-flex flex-column align-items-center gap-1">
+                                        <h2 class="mb-2">8,258</h2>
+                                        <span>Monthly Target/Achieved</span>
+                                      </div>
+                                      <div id="orderStatisticsChart"></div>
+                                    </div>
+                                    <ul class="p-0 m-0">
+                                      <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                          <span class="avatar-initial rounded bg-label-success">
+                                          <i class="bx bx-smile"></i></span>
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                          <div class="me-2">
+                                            <h6 class="mb-0">Win</h6>
+                                            <small class="text-muted">July Month</small>
+                                          </div>
+                                          <div class="user-progress">
+                                            <small class="fw-semibold">8233</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                          <span class="avatar-initial rounded bg-label-danger"><i class="bx bx-sad"></i></span>
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                          <div class="me-2">
+                                            <h6 class="mb-0">Loss</h6>
+                                            <small class="text-muted">July Month</small>
+                                          </div>
+                                          <div class="user-progress">
+                                            <small class="fw-semibold">23.8k</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                          <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-happy-alt" ></i></span>
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                          <div class="me-2">
+                                            <h6 class="mb-0">Enquiry</h6>
+                                            <small class="text-muted">July Month</small>
+                                          </div>
+                                          <div class="user-progress">
+                                            <small class="fw-semibold">849</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                          <span class="avatar-initial rounded bg-label-secondary"
+                                            ><i class="bx bx-happy-heart-eyes"></i></span>
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                          <div class="me-2">
+                                            <h6 class="mb-0">Quotation</h6>
+                                            <small class="text-muted">July Month</small>
+                                          </div>
+                                          <div class="user-progress">
+                                            <small class="fw-semibold">99</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--/ Order Statistics -->
+              
+                              <!-- Expense Overview -->
+                              <div class="col-md-8 col-lg- order-1 mb-4">
+                                <div class="card h-100">
+                                  <div class="card-header">
+                                    <ul class="nav nav-pills" role="tablist">
+                                      <li class="nav-item">
+                                        <button
+                                          type="button"
+                                          class="nav-link active"
+                                          role="tab"
+                                          data-bs-toggle="tab"
+                                          data-bs-target="#navs-tabs-line-card-income"
+                                          aria-controls="navs-tabs-line-card-income"
+                                          aria-selected="true"
+                                        >
+                                          Profit
+                                        </button>
+                                      </li>
+                                      <li class="nav-item">
+                                        <button type="button" class="nav-link" role="tab"   data-bs-toggle="tab"
+                                        data-bs-target="#navs-tabs-line-card-customer"
+                                        aria-controls="navs-tabs-line-card-customer"
+                                        aria-selected="true">Look At Me</button>
+                                      </li>
+                                      <li class="nav-item">
+                                        <button type="button" class="nav-link" role="tab">Statics</button>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="card-body px-0">
+                                    <div class="tab-content p-0">
+                                      <!-- Overall Profit Start -->
+                                      <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+                                        <div class="d-flex p-4 pt-3">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
+                                          </div>
+                                          <div>
+                                            <small class="text-muted d-block">All Profit</small>
+                                            <div class="">
+                                              <h6 class="mb-0 me-1">$459.10</h6>
+                                              <small class="text-success fw-semibold">
+                                                <i class="bx bx-chevron-up"></i>
+                                                42.9%
+                                              </small>
+
+                                            </div>
+
+                                            
+                                          </div>
+                                          <div style="margin-left: 100px;" class="col-md-4">
+                                            <select class="form-control">
+                                              <option>2022</option>
+                                              <option>2021</option>
+                                            </select>
+  </div>
+                                        </div>
+
+                                        <div id="incomeChart"></div>
+                                        <div class="d-flex justify-content-center pt-4 gap-2">
+                                          
+                                          <div>
+                                            <p class="mb-n1 mt-1">Monthly Profit Details</p>
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+
+<!-- Overall Profit End -->
+
+
+                                      <!-- Customers  Start -->
+                                      <div class="tab-pane fade " id="navs-tabs-line-card-customer" role="tabpanel">
+                               
+                                           
+                                            <div class="p-4 row demo-vertical-spacing">
+                                             
+                                              <div class="col-md-3">
+                                                <button
+                                                  type="button"
+                                                  class="btn btn-info text-nowrap"
+                                                  data-bs-toggle="popover"
+                                                  data-bs-offset="0,14"
+                                                  data-bs-placement="top"
+                                                  data-bs-html="true"
+                                                  data-bs-content="<p>This is my enquiry details by clicking the check button you will be redirected to my enquiry page.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-secondary'>Check</button></div>"
+                                                  
+                                                >
+                                                  Enquiry
+                                                </button>
+                                              </div>
+                                              <div class="col-md-3">
+                                                <button
+                                                  type="button"
+                                                  class="btn btn-info text-nowrap"
+                                                  data-bs-toggle="popover"
+                                                  data-bs-offset="0,14"
+                                                  data-bs-placement="top"
+                                                  data-bs-html="true"
+                                                  data-bs-content="<p>This is my quotation details by clicking the check button you will be redirected to my enquiry page.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-secondary'>Check</button></div>"
+                                               
+                                                >
+                                                  Quotation
+                                                </button>
+                                              </div>
+                                          
+                                        </div>
+                      
+                                      </div>
+
+<!-- Customers End -->
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--/ Expense Overview -->
+              
+                              <!-- Transactions -->
+                              
+                              <!--/ Transactions -->
+                            </div>
+                          </div>
+                          </div>
+                          <!-- / Content -->
+              
+                            <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                              <div class="row">
+                               
+                                <!-- Transactions -->
+                                <div class="col-md-6 col-lg-4 order-2 mb-4">
+                                  <div class="card h-100">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                      <h5 class="card-title m-0 me-2">About Me</h5>
+                                      
+                                    </div>
+                                    <div class="card-body">
+                                      <ul class="p-0 m-0">
+                                        <li class="d-flex mb-4 pb-1">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                              <i class="bx bxs-user-circle"></i></span>
+                                          
+                                          </div>
+                                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                              <small class="text-muted d-block mb-1">Name</small>
+                                              <h5 class="mb-0">Shabeer</h5>
+                                            </div>
+                                         
+                                          </div>
+                                        </li>
+                                        <li class="d-flex mb-4 pb-1">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                              <i class="bx bxs-briefcase-alt-2"></i></span>
+                                          </div>
+                                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                              <small class="text-muted d-block mb-1">Occupation</small>
+                                              <h5 class="mb-0">Manging Director</h5>
+                                            </div>
+                                        
+                                          </div>
+                                        </li>
+                                        <li class="d-flex mb-4 pb-1">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                              <i class="bx bx-buildings"></i></span>
+                                          </div>
+                                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                              <small class="text-muted d-block mb-1">Location</small>
+                                              <h5 class="mb-0">Dubai</h5>
+                                            </div>
+                                          
+                                          </div>
+                                        </li>
+                                        <li class="d-flex mb-4 pb-1">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                              <i class="bx bxs-time"></i></span>
+                                          </div>
+                                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                              <small class="text-muted d-block mb-1">Date Of Birth</small>
+                                              <h5 class="mb-0">30-04-1998</h5>
+                                            </div>
+                                         
+                                          </div>
+                                        </li>
+                                        <li class="d-flex mb-4 pb-1">
+                                          <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                              <i class="bx bxs-phone"></i></span>
+                                          </div>
+                                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                              <small class="text-muted d-block mb-1">Phone</small>
+                                              <h5 class="mb-0">9652525522</h5>
+                                            </div>
+                                        
+                                          </div>
+                                        </li>
+                                        
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--/ Transactions -->
+                                <!-- Transactions -->
+                                <div class="col-md-6 col-lg-8 order-2 mb-4">
+                                  <div class="card h-100">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                      <h5 class="card-title m-0 me-2 text-muted">More About Me</h5>
+                                      
+                                    </div>
+                                    <div class="card-body">
+                                     <!-- Accordion -->
+              
+              <div class="row">
+               
+                <div class="col-md">
+                
+                  <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+                    <div class="accordion-item card">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
+                        <button
+                          type="button"
+                          class="accordion-button collapsed"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionIcon-1"
+                          aria-controls="accordionIcon-1"
+                        >
+                          Me Myself
+                        </button>
+                      </h2>
+
+                      <div id="accordionIcon-1" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                        <div class="accordion-body">
+                          Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing
+                          marzipan gummi bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping
+                          soufflé. Wafer gummi bears marshmallow pastry pie.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item card">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconTwo">
+                        <button
+                          type="button"
+                          class="accordion-button collapsed"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionIcon-2"
+                          aria-controls="accordionIcon-2"
+                        >
+                          My Identity Details
+                        </button>
+                      </h2>
+                      <div id="accordionIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                        <div class="accordion-body">
+                          Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake
+                          dragée ice cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies.
+                          Jelly beans candy canes carrot cake. Fruitcake chocolate chupa chups.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item card active">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
+                        <button
+                          type="button"
+                          class="accordion-button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionIcon-3"
+                          aria-expanded="true"
+                          aria-controls="accordionIcon-3"
+                        >
+                          More About Me
+                        </button>
+                      </h2>
+                      <div
+                        id="accordionIcon-3"
+                        class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionIcon"
+                      >
+                        <div class="accordion-body">
+                          Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon
+                          gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake
+                          dragée caramels. Ice cream wafer danish cookie caramels muffin.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ Accordion -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--/ Transactions -->
+
+                              </div>
+                            </div>
+                            <!-- / Content -->
+                
+                            
+  
+                            <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
+                               <!-- User Mangement Overview -->
+                               <div class="col-md-12 col-lg- order-1 mb-4">
+                                <div class="card h-100">
+                                  <div class="card-header">
+                                    <ul class="nav nav-pills" role="tablist">
+                                      <li class="nav-item">
+                                        <button
+                                          type="button"
+                                          class="nav-link active"
+                                          role="tab"
+                                          data-bs-toggle="tab"
+                                          data-bs-target="#navs-tabs-line-card-Leave"
+                                          aria-controls="navs-tabs-line-card-Leave"
+                                          aria-selected="true"
+                                        >
+                                          Leave
+                                        </button>
+                                      </li>
+                                      <li class="nav-item">
+                                        <button type="button" class="nav-link" role="tab"   data-bs-toggle="tab"
+                                        data-bs-target="#navs-tabs-line-card-todo"
+                                        aria-controls="navs-tabs-line-card-todo"
+                                        aria-selected="true">My-Todo</button>
+                                      </li>
+                                      <li class="nav-item">
+                                        <button type="button" class="nav-link" role="tab">Statics</button>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="card-body px-0">
+                                    <div class="tab-content p-0">
+                                      <!-- Overall Profit Start -->
+                                      <div class="tab-pane fade show active" id="navs-tabs-line-card-Leave" role="tabpanel">
+                                       <!-- Accordion -->
+             
+              <div class="row">
+               
+                <div class="col-md">
+           
+                  <div id="accordionLeave" class="accordion mt-3 accordion-without-arrow">
+                    <div class="accordion-item card">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionLeaveOne">
+                        <button
+                          type="button"
+                          class="accordion-button collapsed"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionLeave-1"
+                          aria-controls="accordionLeave-1"
+                        >
+                         Apply For Leave
+                        </button>
+                      </h2>
+
+                      <div id="accordionLeave-1" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                        <div class="accordion-body">
+                          <form>
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                              <div class="col-md-6">
+                                <div class="form-outline">
+                                  <label class="form-label" for="form3Example1">From</label>
+                                  <input type="date" id="form3Example1" class="form-control" />
+                                 
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-outline">
+                                  <label class="form-label" for="form3Example2">To</label>
+                                  <input type="date" id="form3Example2" class="form-control" />
+                                  
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="form-outline">
+                                  <label class="form-label" for="form3Example2">Type</label>
+                                <select class="form-control"> 
+<option>Sick</option>
+<option>Vacation</option>
+<option>Casual</option>
+
+                                </select>
+                                </div>
+                              </div>
+
+                            </div>
+                            
+                          
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                         <textarea class="form-control" placeholder="reason"></textarea>
+                            </div>
+                          
+                        
+                          
+                         
+                        
+                          
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Apply</button>
+                          
+                          
+                        
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item card">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionLeaveTwo">
+                        <button
+                          type="button"
+                          class="accordion-button collapsed"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionLeave-2"
+                          aria-controls="accordionLeave-2"
+                        >
+                          Leave Details
+                        </button>
+                      </h2>
+                      <div id="accordionLeave-2" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                        <div class="accordion-body">
+                       <!-- Basic Bootstrap Table -->
+              <div class="card">
+      
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Type</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td>
+                          Sick
+                        </td>
+                        <td><textare class="form-control">Feel not good please allow me one day leave</textare></td>
+                        <td>
+                          <span class="badge bg-label-primary me-1">Active</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td>
+                          Sick
+                        </td>
+                        <td><textare class="form-control">Feel not good please allow me one day leave</textare></td>
+                        <td>
+                          <span class="badge bg-label-primary me-1">Active</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td>
+                          Sick
+                        </td>
+                        <td><textare class="form-control">Feel not good please allow me one day leave</textare></td>
+                        <td>
+                          <span class="badge bg-label-primary me-1">Active</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>11/12/2021</strong></td>
+                        <td>
+                          Sick
+                        </td>
+                        <td><textare class="form-control">Feel not good please allow me one day leave</textare></td>
+                        <td>
+                          <span class="badge bg-label-primary me-1">Active</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Basic Bootstrap Table -->
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item card active">
+                      <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
+                        <button
+                          type="button"
+                          class="accordion-button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#accordionIcon-3"
+                          aria-expanded="true"
+                          aria-controls="accordionIcon-3"
+                        >
+                          Accordion Item 3
+                        </button>
+                      </h2>
+                      <div
+                        id="accordionIcon-3"
+                        class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionIcon"
+                      >
+                        <div class="accordion-body">
+                          Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon
+                          gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake
+                          dragée caramels. Ice cream wafer danish cookie caramels muffin.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ Accordion -->
+                                      </div>
+
+<!-- Overall Profit End -->
+
+
+                                      <!-- Customers  Start -->
+                                      <div class="tab-pane fade " id="navs-tabs-line-card-todo" role="tabpanel">
+                                        <section class="vh-100">
+                                          <div class="container py-5 h-100">
+                                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                              <div class="col">
+                                                <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+                                                  <div class="card-body py-4 px-4 px-md-5">
+                                        
+                                                    <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                                                      <i class="fas fa-check-square me-1"></i>
+                                                      <u>My Todo-s</u>
+                                                    </p>
+                                        
+                                                    <div class="pb-2">
+                                                      <div class="card">
+                                                        <div class="card-body">
+                                                          <div class="d-flex flex-row align-items-center">
+                                                            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                                                              placeholder="Add new...">
+                                                            <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
+                                                                class="fas fa-calendar-alt fa-lg me-3"></i></a>
+                                                            <div>
+                                                              <button type="button" class="btn btn-primary">Add</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                        
+                                                    <hr class="my-4">
+                                        
+                                                    <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                                                      <p class="small mb-0 me-2 text-muted">Filter</p>
+                                                      <select class="select">
+                                                        <option value="1">All</option>
+                                                        <option value="2">Completed</option>
+                                                        <option value="3">Active</option>
+                                                        <option value="4">Has due date</option>
+                                                      </select>
+                                                      <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                                                      <select class="select">
+                                                        <option value="1">Added date</option>
+                                                        <option value="2">Due date</option>
+                                                      </select>
+                                                      <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i
+                                                          class="fas fa-sort-amount-down-alt ms-2"></i></a>
+                                                    </div>
+                                        
+                                                    <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                                                      <li
+                                                        class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+                                                            aria-label="..." checked />
+                                                        </div>
+                                                      </li>
+                                                      <li
+                                                        class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                                                        <p class="lead fw-normal mb-0">Check new customer</p>
+                                                      </li>
+                                                      <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="d-flex flex-row justify-content-end mb-1">
+                                                          <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
+                                                              class="fas fa-pencil-alt me-3"></i></a>
+                                                          <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+                                                              class="fas fa-trash-alt"></i></a>
+                                                        </div>
+                                                        <div class="text-end text-muted">
+                                                          <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
+                                                          </a>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                                    <ul class="list-group list-group-horizontal rounded-0">
+                                                      <li
+                                                        class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked2"
+                                                            aria-label="..." />
+                                                        </div>
+                                                      </li>
+                                                      <li
+                                                        class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                                                        <p class="lead fw-normal mb-0">Call this customer</p>
+                                                      </li>
+                                                      <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
+                                                        <div
+                                                          class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+                                                          <p class="small mb-0">
+                                                            <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
+                                                              <i class="fas fa-hourglass-half me-2 text-warning"></i>
+                                                            </a>
+                                                            28th Jun 2022
+                                                          </p>
+                                                        </div>
+                                                      </li>
+                                                      <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="d-flex flex-row justify-content-end mb-1">
+                                                          <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
+                                                              class="fas fa-pencil-alt me-3"></i></a>
+                                                          <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+                                                              class="fas fa-trash-alt"></i></a>
+                                                        </div>
+                                                        <div class="text-end text-muted">
+                                                          <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
+                                                          </a>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                                    <ul class="list-group list-group-horizontal rounded-0 mb-2">
+                                                      <li
+                                                        class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="form-check">
+                                                          <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked3"
+                                                            aria-label="..." />
+                                                        </div>
+                                                      </li>
+                                                      <li
+                                                        class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                                                        <p class="lead fw-normal mb-0 bg-light w-100 ms-n2 ps-2 py-1 rounded">Sign up for online
+                                                          course</p>
+                                                      </li>
+                                                      <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                                                        <div class="d-flex flex-row justify-content-end mb-1">
+                                                          <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+                                                              class="fas fa-trash-alt"></i></a>
+                                                        </div>
+                                                        <div class="text-end text-muted">
+                                                          <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>28th Jun 2020</p>
+                                                          </a>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                        
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </section>
+                                          
+                                      </div>
+
+<!-- Customers End -->
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--/ User Management overview -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    <!-- crm profile description end -->
+         
+</div>
+
+        
+          
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- profile end -->
+
+
+ <!-- Content wrapper -->
+ <div class="content-wrapper">
+            
+
+
+
+    <div class="content-backdrop fade"></div>
+  </div>
+  <!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+</div>
+
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+
+
+
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="../assets/vendor/libs/jquery/jquery.js"></script>
+<script src="../assets/vendor/libs/popper/popper.js"></script>
+<!-- Remember to include jQuery :) -->
+<script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="../assets/vendor/js/bootstrap.js"></script>
+<script src="../assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+
+<script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+<!-- Main JS -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Page JS -->
+<script src="../assets/js/dashboards-analytics.js"></script>
+<script src="../assets/js/ui-popover.js"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- Javascript chart -->
+<script src="../assets/js/chart.js"></script>
+<script src="../assets/js/table.js"></script>
+
+
+</body>
+
+</html>
